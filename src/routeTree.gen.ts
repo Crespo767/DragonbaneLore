@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MundoRouteImport } from './routes/mundo'
 import { Route as MisteriosRouteImport } from './routes/misterios'
+import { Route as InicioRouteImport } from './routes/inicio'
 import { Route as HabitantesRouteImport } from './routes/habitantes'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,6 +23,11 @@ const MundoRoute = MundoRouteImport.update({
 const MisteriosRoute = MisteriosRouteImport.update({
   id: '/misterios',
   path: '/misterios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InicioRoute = InicioRouteImport.update({
+  id: '/inicio',
+  path: '/inicio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HabitantesRoute = HabitantesRouteImport.update({
@@ -38,12 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/habitantes': typeof HabitantesRoute
+  '/inicio': typeof InicioRoute
   '/misterios': typeof MisteriosRoute
   '/mundo': typeof MundoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/habitantes': typeof HabitantesRoute
+  '/inicio': typeof InicioRoute
   '/misterios': typeof MisteriosRoute
   '/mundo': typeof MundoRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/habitantes': typeof HabitantesRoute
+  '/inicio': typeof InicioRoute
   '/misterios': typeof MisteriosRoute
   '/mundo': typeof MundoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/habitantes' | '/misterios' | '/mundo'
+  fullPaths: '/' | '/habitantes' | '/inicio' | '/misterios' | '/mundo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/habitantes' | '/misterios' | '/mundo'
-  id: '__root__' | '/' | '/habitantes' | '/misterios' | '/mundo'
+  to: '/' | '/habitantes' | '/inicio' | '/misterios' | '/mundo'
+  id: '__root__' | '/' | '/habitantes' | '/inicio' | '/misterios' | '/mundo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HabitantesRoute: typeof HabitantesRoute
+  InicioRoute: typeof InicioRoute
   MisteriosRoute: typeof MisteriosRoute
   MundoRoute: typeof MundoRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/misterios'
       fullPath: '/misterios'
       preLoaderRoute: typeof MisteriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inicio': {
+      id: '/inicio'
+      path: '/inicio'
+      fullPath: '/inicio'
+      preLoaderRoute: typeof InicioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/habitantes': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HabitantesRoute: HabitantesRoute,
+  InicioRoute: InicioRoute,
   MisteriosRoute: MisteriosRoute,
   MundoRoute: MundoRoute,
 }
