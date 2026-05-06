@@ -39,21 +39,14 @@ function Index() {
               className="font-display text-5xl md:text-7xl lg:text-8xl text-parchment mt-3 drop-shadow-[0_4px_18px_rgba(0,0,0,0.7)]">
               Dragonbane
             </motion.h1>
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
-              className="font-display text-aged-gold tracking-[0.3em] uppercase text-sm mt-1">
-              Lore Compendium
-            </motion.p>
             <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}
               className="mt-6 max-w-2xl text-parchment/90 italic text-lg leading-relaxed">
               {site.hook}
             </motion.p>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
               className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link to="/mundo" className="px-6 py-3 bg-dragon-red text-parchment font-display tracking-wider uppercase text-sm rounded shadow-lg hover:bg-aged-gold hover:text-charcoal transition-colors">
+              <Link to="/mundo" className="px-8 py-3 bg-dragon-red text-parchment font-display tracking-wider uppercase text-sm rounded shadow-lg hover:bg-aged-gold hover:text-charcoal transition-colors">
                 Começar a Explorar
-              </Link>
-              <Link to="/habitantes" className="px-6 py-3 border border-aged-gold text-aged-gold font-display tracking-wider uppercase text-sm rounded hover:bg-aged-gold/15 transition-colors">
-                Habitantes
               </Link>
             </motion.div>
           </div>
